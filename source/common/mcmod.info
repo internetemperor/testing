@@ -1,0 +1,20 @@
+[
+{
+	"modid": "TM",
+	"name": "Test Mod",
+	"description": "Mod for learning minecraft modding.",
+	"version": "0.0.1",
+	"url": "www.buttes.org",
+	"updateUrl": "",
+	"authorList": [
+		"internetemperor"
+	],
+	"credits": "SomethingAwful rules",
+	"logoFile": "",
+	"screenshots": [
+	],
+	"parent": "",
+	"dependencies": [
+	]
+}
+]

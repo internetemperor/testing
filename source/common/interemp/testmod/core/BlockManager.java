@@ -1,12 +1,24 @@
 package interemp.testmod.core;
 
-public class BlockManager {
+import interemp.testmod.blocks.OreMonazite;
+import interemp.testmod.blocks.OreUraninite;
+import interemp.testmod.lib.BlockReference;
+import net.minecraft.block.Block;
 
-    public static int RegisterBlocks() {
-        // TODO: Read from config file to get starting block id
-        // Pulls block IDs from BlockRef and registers them
-        // Returns 1 in the event a block failed to register (dupe id)
-        
-        return 0;
+/**
+ * Manages all block related activities (registering, textures, etc)
+ * 
+ * @author InternetEmperor
+ */
+public class BlockManager {
+    
+    // Block instances
+    
+    public static Block oreMonazite;
+    public static Block oreUraninite;
+
+    public static void init() {
+        oreMonazite = new OreMonazite(BlockReference.ID_ORE_MONAZITE, BlockReference.MAT_ORE_MONAZITE);
+        oreUraninite = new OreUraninite(BlockReference.ID_ORE_URANINITE, BlockReference.MAT_ORE_URANINITE);
     }
 }

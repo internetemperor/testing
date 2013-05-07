@@ -3,16 +3,14 @@ package interemp.testmod.core;
 import java.util.HashMap;
 
 public class LocalizationManager {
-    public static HashMap<String, String> languages;
+    public static HashMap strings = new HashMap<String, String>();
     
-    // Read config file
-    // TODO: read from language config file
+    // Read config file to get language to use then parse correct xml file into hashmap
+    // TODO: read from config file
     // TODO: create base language file
     
-    public static int initLanguages() {
-        for(String line : languages.keySet()) {
-            
-        }
+    public static int preinitLocalization() {
+
         return 0;
     }
 }

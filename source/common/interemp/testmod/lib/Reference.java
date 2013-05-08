@@ -12,5 +12,5 @@ public class Reference {
     public static final boolean CLIENT_SIDE = true;
     public static final boolean SERVER_SIDE = false;
     public static final int BLOCKID_START = 200;
-    public static final int ITEMID_START = 33000;
+    public static final int ITEMID_START = 5000;
 }

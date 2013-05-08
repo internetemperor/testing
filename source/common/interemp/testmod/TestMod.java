@@ -2,6 +2,7 @@ package interemp.testmod;
 
 import interemp.testmod.core.BlockManager;
 import interemp.testmod.core.CreativeTab;
+import interemp.testmod.core.ItemManager;
 import interemp.testmod.lib.Reference;
 import net.minecraft.creativetab.CreativeTabs;
 import cpw.mods.fml.common.Mod;
@@ -50,6 +51,7 @@ public class TestMod {
     @Init
     public void init(FMLInitializationEvent event) {
         BlockManager.init();
+        ItemManager.init();
     }
     
     /**

@@ -6,7 +6,7 @@ package interemp.testmod.lib;
  * @author InternetEmperor
  */
 public class StringReference {
-    public static final String NAME_ORE_MONAZITE = "oreMonazite";
-    public static final String DESC_ORE_MONAZITE = "oreMonazite";
-    public static final String NAME_ORE_URANINITE = "oreUraninite";
+    public static final String NAME_ORE_THORIUM = "oreThorium";
+    public static final String DESC_ORE_THORIUM = "oreThorium";
+    public static final String NAME_ORE_URANIUM = "oreUranium";
 }

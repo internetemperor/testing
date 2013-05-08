@@ -8,9 +8,9 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraftforge.common.MinecraftForge;
 
-public class OreMonazite extends TMBlock {
+public class OreThorium extends TMBlock {
 
-    public OreMonazite(int id, Material material) {
+    public OreThorium(int id, Material material) {
         super(id, material);
 
         // Block's creative tab
@@ -45,11 +45,11 @@ public class OreMonazite extends TMBlock {
 
         // Finally, register the block so that it appears in the game. New
         // standard requires a name to be passed.
-        GameRegistry.registerBlock(this, StringReference.NAME_ORE_MONAZITE);
-        setUnlocalizedName(StringReference.NAME_ORE_MONAZITE);
+        GameRegistry.registerBlock(this, StringReference.NAME_ORE_THORIUM);
+        setUnlocalizedName(StringReference.NAME_ORE_THORIUM);
 
         // TODO: Pull this from LocalizationManager
-        LanguageRegistry.addName(this, "Monazite Ore");
+        LanguageRegistry.addName(this, "Thorium Ore");
     }
     
 }

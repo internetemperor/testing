@@ -14,4 +14,5 @@ public class StringReference {
     public static final String NAME_INGOT_ENRICHED_URANIUM = "ingotEnrichedUranium";
     public static final String NAME_INGOT_STEEL = "ingotSteel";
     public static final String NAME_INGOT_PLUTONIUM = "ingotPlutonium";
+    public static final String NAME_DUST_URANIUM = "dustUranium";
 }

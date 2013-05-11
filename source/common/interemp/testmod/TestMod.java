@@ -64,8 +64,8 @@ public class TestMod {
         GameRegistry.registerBlock(blockOres, ItemBlockTest.class, "TestMod Ores Block");
         
         for (int i = 0; i < BlockReference.ores.length; i++) {
-            LanguageRegistry.addName(new ItemStack(blockOres, 1, i), blockOres.prefix + " " + BlockReference.ores[i]);
-            System.out.println("Registered name: " + blockOres.prefix + " " + BlockReference.ores[i]);
+            LanguageRegistry.addName(new ItemStack(blockOres, 1, i), blockOres.nameConstant + " " + BlockReference.ores[i]);
+            System.out.println("Registered name: " + blockOres.nameConstant + " " + BlockReference.ores[i]);
         }
     }
     

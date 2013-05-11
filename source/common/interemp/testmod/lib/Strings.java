@@ -8,6 +8,7 @@ import java.util.Map;
  * Holds all strings used in the mod in a hashmap using the icon name as the key
  * 
  * TODO: Make it read from the config file for localization purposes
+ * TODO: Retrieve key strings from BlockReference, ItemReference metadata/item lists
  * 
  * @author InternetEmperor
  */

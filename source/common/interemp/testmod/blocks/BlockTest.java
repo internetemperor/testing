@@ -17,7 +17,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class BlockTest extends Block {
     
     public String[] names;
-    public String prefix;
+    public String nameConstant;
     public Icon[] iconArray;
     public boolean hasMetadata = false;
 
@@ -45,16 +45,12 @@ public class BlockTest extends Block {
 
             for (int i = 0; i < names.length; i++)
             {
-                this.iconArray[i] = ic.registerIcon(Reference.MOD_ID.toLowerCase() + ":" + prefix.toLowerCase() + names[i]);
-                System.out.println("REGISTERED METADATA ICON: " + Reference.MOD_ID.toLowerCase() + ":" + prefix.toLowerCase() + names[i]);
+                this.iconArray[i] = ic.registerIcon(Reference.MOD_ID.toLowerCase() + ":" + getUnlocalizedName2() + names[i]);
             }
         }
         else {
             blockIcon = ic.registerIcon(Reference.MOD_ID.toLowerCase() + ":" + this.getUnlocalizedName2());
-            System.out.println("REGISTERED REGULAR ICON" + this.getUnlocalizedName2());
         }
-        System.out.println("Names.length:" + names.length);
-        System.out.println("iconArray.length:" + iconArray.length);
     }
     
     /**

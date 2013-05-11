@@ -7,8 +7,9 @@ public class BlockOres extends BlockTest {
 
     public BlockOres(int id, Material material) {
         super(id, material);
-        prefix = "Ore";
+        nameConstant = "Ore";
         names = BlockReference.ores;
+        setUnlocalizedName("ore"); // this is important for itemblocktest
         hasMetadata = true;
     }
 }

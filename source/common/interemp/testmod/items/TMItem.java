@@ -1,5 +1,6 @@
 package interemp.testmod.items;
 
+import interemp.testmod.TestMod;
 import interemp.testmod.lib.Reference;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -10,6 +11,7 @@ public class TMItem extends Item {
 
     public TMItem(int id) {
         super(id);
+        setCreativeTab(TestMod.tabTM);
     }
     
     @Override

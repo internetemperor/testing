@@ -1,7 +1,7 @@
 package interemp.testmod.core;
 
 import interemp.testmod.blocks.OreThorium;
-import interemp.testmod.blocks.OreUranium;
+import interemp.testmod.blocks.OreUraninite;
 import interemp.testmod.lib.BlockReference;
 import net.minecraft.block.Block;
 
@@ -15,10 +15,10 @@ public class BlockManager {
     // Block instances
     
     public static Block oreThorium;
-    public static Block oreUranium;
+    public static Block oreUraninite;
 
     public static void init() {
         oreThorium = new OreThorium(BlockReference.ID_ORE_THORIUM, BlockReference.MAT_ORE_THORIUM);
-        oreUranium = new OreUranium(BlockReference.ID_ORE_URANIUM, BlockReference.MAT_ORE_URANIUM);
+        oreUraninite = new OreUraninite(BlockReference.ID_ORE_Uraninite, BlockReference.MAT_ORE_Uraninite);
     }
 }

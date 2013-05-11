@@ -7,10 +7,10 @@ public class BlockReference {
     
     // IDs
     public static final int ID_ORE_THORIUM = n++;
-    public static final int ID_ORE_URANIUM = n++;
+    public static final int ID_ORE_Uraninite = n++;
     
     // Materials
     public static final Material MAT_ORE_THORIUM = Material.rock;
-    public static final Material MAT_ORE_URANIUM = Material.rock;
+    public static final Material MAT_ORE_Uraninite = Material.rock;
     
 }

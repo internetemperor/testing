@@ -9,7 +9,7 @@ public class LocalizationManager {
     // TODO: read from config file
     // TODO: create base language file
     
-    public static int preinitLocalization() {
+    public static int preinit() {
 
         return 0;
     }

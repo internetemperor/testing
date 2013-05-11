@@ -1,8 +1,14 @@
 package interemp.testmod;
 
+import interemp.testmod.blocks.BlockOres;
+import interemp.testmod.blocks.ItemBlockTest;
 import interemp.testmod.core.CreativeTab;
+import interemp.testmod.lib.BlockReference;
 import interemp.testmod.lib.Reference;
+import interemp.testmod.lib.Strings;
+import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.Instance;
@@ -13,9 +19,11 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
+import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.common.registry.LanguageRegistry;
 
 @Mod(modid = Reference.MOD_ID, name= Reference.MOD_NAME, version = Reference.MOD_VERSION)
-@NetworkMod(clientSideRequired = Reference.CLIENT_SIDE, serverSideRequired = Reference.SERVER_SIDE)
+@NetworkMod(clientSideRequired = true, serverSideRequired = false)
 public class TestMod {
     
     @Instance(Reference.MOD_ID)
@@ -24,7 +32,11 @@ public class TestMod {
     @SidedProxy(clientSide="interemp.testmod.client.ClientProxy", serverSide="interemp.testmod.CommonProxy")
     public static CommonProxy proxy;
     
-    public static CreativeTabs tabTM = new CreativeTab(CreativeTabs.getNextID(), Reference.MOD_ID);
+    public static CreativeTabs tab = new CreativeTab(CreativeTabs.getNextID(), Reference.MOD_ID);
+    
+    // Blocks
+    
+    public static BlockOres blockOres;
     
     /**
     * In the preInit step you only want to load configs, reserve block/item
@@ -48,7 +60,13 @@ public class TestMod {
     */
     @Init
     public void init(FMLInitializationEvent event) {
+        blockOres = new BlockOres(BlockReference.ID_BLOCK_ORES, Material.rock);
+        GameRegistry.registerBlock(blockOres, ItemBlockTest.class, "TestMod Ores Block");
         
+        for (int i = 0; i < BlockReference.ores.length; i++) {
+            LanguageRegistry.addName(new ItemStack(blockOres, 1, i), blockOres.prefix + " " + BlockReference.ores[i]);
+            System.out.println("Registered name: " + blockOres.prefix + " " + BlockReference.ores[i]);
+        }
     }
     
     /**

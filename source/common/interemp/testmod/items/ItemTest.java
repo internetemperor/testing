@@ -1,38 +1,34 @@
-package interemp.testmod.blocks;
-
-import java.util.List;
+package interemp.testmod.items;
 
 import interemp.testmod.TestMod;
 import interemp.testmod.lib.Reference;
-import interemp.testmod.lib.Strings;
-import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
+
+import java.util.List;
+
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockTest extends Block {
+public class ItemTest extends Item {
     
     public String[] names;
     public String nameConstant;
     public Icon[] iconArray;
     public boolean hasMetadata = false;
 
-    public BlockTest(int id, Material material) {
-        super(id, material);
+    public ItemTest(int id) {
+        super(id);
         setCreativeTab(TestMod.tab);
+        setMaxStackSize(64);
     }
     
     @SideOnly(Side.CLIENT)
-    public Icon getIcon(int side, int meta) {
+    public Icon getIconFromDamage(int meta) {
         return this.iconArray[meta % iconArray.length];
-    }
-    
-    public int damageDropped(int meta) {
-        return meta;
     }
 
     @Override
@@ -43,24 +39,20 @@ public class BlockTest extends Block {
 
             for (int i = 0; i < names.length; i++)
             {
-                this.iconArray[i] = ic.registerIcon(Reference.MOD_ID.toLowerCase() + ":" + getUnlocalizedName2() + names[i]);
+                this.iconArray[i] = ic.registerIcon(Reference.MOD_ID.toLowerCase() + ":" + getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".") + 1) + names[i]);
             }
         }
         else {
-            blockIcon = ic.registerIcon(Reference.MOD_ID.toLowerCase() + ":" + this.getUnlocalizedName2());
+            itemIcon = ic.registerIcon(Reference.MOD_ID.toLowerCase() + ":" + this.getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".") + 1));
         }
     }
     
-    /**
-     * returns a list of blocks with the same ID, but different meta (eg: wood returns 4 blocks)
-     */
     @SideOnly(Side.CLIENT)
-    public void getSubBlocks(int id, CreativeTabs tab, List list) {
-        for (int j = 0; j < names.length; ++j)
-        {
-            list.add(new ItemStack(id, 1, j));
-        }
-    }
+    public void getSubItems(int id, CreativeTabs tabs, List list){
+        for(int i = 0; i < names.length; i++){
+                list.add(new ItemStack(id, 1, i));
+         }
+     }
     
     public boolean hasMetadata() {
         return hasMetadata;

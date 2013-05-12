@@ -11,7 +11,12 @@ public class BlockReference {
     
     public final static int ID_BLOCK_ORES = 924;
 
+    /**
+     * % denotes where the item prefix (generally the same as the (singular) array name will be put
+     * 
+     * % at the start = Ore Uranium, at the end = Uranium Ore, No % = Uranium
+     */
     public static String[] ores = {
-        "Uraninite", "Thorium"
+        "Uraninite%", "Thorium%"
     };
 }

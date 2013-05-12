@@ -3,9 +3,10 @@ package interemp.testmod;
 import interemp.testmod.blocks.BlockOres;
 import interemp.testmod.blocks.ItemBlockTest;
 import interemp.testmod.core.CreativeTab;
+import interemp.testmod.items.ItemDusts;
 import interemp.testmod.lib.BlockReference;
+import interemp.testmod.lib.ItemReference;
 import interemp.testmod.lib.Reference;
-import interemp.testmod.lib.Strings;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
@@ -38,6 +39,10 @@ public class TestMod {
     
     public static BlockOres blockOres;
     
+    // Items
+    
+    public static ItemDusts itemDusts;
+    
     /**
     * In the preInit step you only want to load configs, reserve block/item
     * IDs, and inform Forge if your mod has to be loaded after any others. No
@@ -61,11 +66,48 @@ public class TestMod {
     @Init
     public void init(FMLInitializationEvent event) {
         blockOres = new BlockOres(BlockReference.ID_BLOCK_ORES, Material.rock);
-        GameRegistry.registerBlock(blockOres, ItemBlockTest.class, "TestMod Ores Block");
+        GameRegistry.registerBlock(blockOres, ItemBlockTest.class, "TestMod Ores Block", "TestMod");
         
+        // TODO: Move these to a helper class
+        // Metablock registration
         for (int i = 0; i < BlockReference.ores.length; i++) {
-            LanguageRegistry.addName(new ItemStack(blockOres, 1, i), blockOres.nameConstant + " " + BlockReference.ores[i]);
-            System.out.println("Registered name: " + blockOres.nameConstant + " " + BlockReference.ores[i]);
+            // TODO: Make this more modular (for loop through array of multiblock name arrays)
+            String name = "";
+            if(BlockReference.ores[i].startsWith("%")) {
+                name = blockOres.nameConstant + " " + BlockReference.ores[i];
+            }
+            else if(BlockReference.ores[i].endsWith("%")) {
+                name = BlockReference.ores[i] + " " + blockOres.nameConstant;
+            }
+            else {
+                name = BlockReference.ores[i];
+            }
+            name.replaceFirst("%", "");
+            
+            LanguageRegistry.addName(new ItemStack(blockOres, 1, i), name);
+            System.out.println("Registered name: " + name);
+        }
+        
+        itemDusts = new ItemDusts(ItemReference.ID_ITEM_DUSTS);
+        GameRegistry.registerItem(itemDusts, "TestMod Dusts Item", "TestMod");
+        
+        // Metaitem registration
+        for (int i = 0; i < ItemReference.dusts.length; i++) {
+            // TODO: Make this more modular (for loop through array of multiblock name arrays)
+            String name = "";
+            if(ItemReference.dusts[i].startsWith("%")) {
+                name = itemDusts.nameConstant + " " + ItemReference.dusts[i];
+            }
+            else if(ItemReference.dusts[i].endsWith("%")) {
+                name = ItemReference.dusts[i] + " " + itemDusts.nameConstant;
+            }
+            else {
+                name = ItemReference.dusts[i];
+            }
+            name.replaceFirst("%", "");
+            
+            LanguageRegistry.addName(new ItemStack(itemDusts, 1, i), name);
+            System.out.println("Registered name: " + name);
         }
     }
     

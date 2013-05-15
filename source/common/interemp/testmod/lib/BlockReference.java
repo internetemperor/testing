@@ -1,5 +1,7 @@
 package interemp.testmod.lib;
 
+import net.minecraft.item.ItemStack;
+
 /**
  * Holds all metadata and id references for blocks
  * 
@@ -17,6 +19,17 @@ public class BlockReference {
      * % at the start = Ore Uranium, at the end = Uranium Ore, No % = Uranium
      */
     public static String[] ores = {
-        "Uraninite%", "Thorium%"
+        "Uraninite%",
+        "Thorium%",
+        "Fluorite%"
     };
+    
+    public static String nameLookup(ItemStack itemStack) {
+        String name = "";
+        if(itemStack.getItem().getUnlocalizedName().endsWith("ore")) {
+            name = ores[itemStack.getItemDamage()];
+            System.out.println("Name lookup: " + name + ", " + itemStack.getItemDamage());
+        }
+        return name;
+    }
 }

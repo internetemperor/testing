@@ -8,15 +8,19 @@ package interemp.testmod.lib;
  * @author InternetEmperor
  */
 public class ItemReference {
-    public final static int ID_ITEM_DUSTS = 39000;
+    public final static int ID_ITEM_DUSTS = 26000;
 
     // Prefix for this group is Pulverized
     public static String[] dusts = {
         "%Uranium",
         "Uranium Dioxide",
         "Enriched Uranium Dioxide",
-        "%Depleted Uranium",
+        "Depleted Uranium Dioxide",
         "Uranium Hexafluoride",
+        "Enriched Uranium Hexafluoride",
+        "Plutonium Dioxide",
+        "Mixed Oxide",
         "%Thorium",
+        "%Fluorite"
     };
 }

@@ -66,7 +66,7 @@ public class TestMod {
     @Init
     public void init(FMLInitializationEvent event) {
         blockOres = new BlockOres(BlockReference.ID_BLOCK_ORES, Material.rock);
-        GameRegistry.registerBlock(blockOres, ItemBlockTest.class, "TestMod Ores Block", "TestMod");
+        GameRegistry.registerBlock(blockOres, ItemBlockTest.class, "TestMod Ores Block");
         
         // TODO: Move these to a helper class
         // Metablock registration
@@ -82,14 +82,14 @@ public class TestMod {
             else {
                 name = BlockReference.ores[i];
             }
-            name.replaceFirst("%", "");
+            name = name.replaceFirst("%", "");
             
             LanguageRegistry.addName(new ItemStack(blockOres, 1, i), name);
             System.out.println("Registered name: " + name);
         }
         
         itemDusts = new ItemDusts(ItemReference.ID_ITEM_DUSTS);
-        GameRegistry.registerItem(itemDusts, "TestMod Dusts Item", "TestMod");
+        GameRegistry.registerItem(itemDusts, "TestMod Dusts Item");
         
         // Metaitem registration
         for (int i = 0; i < ItemReference.dusts.length; i++) {
@@ -104,7 +104,7 @@ public class TestMod {
             else {
                 name = ItemReference.dusts[i];
             }
-            name.replaceFirst("%", "");
+            name = name.replaceFirst("%", "");
             
             LanguageRegistry.addName(new ItemStack(itemDusts, 1, i), name);
             System.out.println("Registered name: " + name);

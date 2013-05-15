@@ -1,6 +1,7 @@
 package interemp.testmod.items;
 
 import interemp.testmod.TestMod;
+import interemp.testmod.lib.BlockReference;
 import interemp.testmod.lib.Reference;
 
 import java.util.List;
@@ -39,7 +40,10 @@ public class ItemTest extends Item {
 
             for (int i = 0; i < names.length; i++)
             {
-                this.iconArray[i] = ic.registerIcon(Reference.MOD_ID.toLowerCase() + ":" + getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".") + 1) + names[i]);
+                String name = names[i];
+                name = name.replaceFirst("%", "");
+                name = name.replaceAll(" ", "");
+                this.iconArray[i] = ic.registerIcon(Reference.MOD_ID.toLowerCase() + ":" + getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".") + 1) + name);
             }
         }
         else {
@@ -53,6 +57,16 @@ public class ItemTest extends Item {
                 list.add(new ItemStack(id, 1, i));
          }
      }
+    
+    /**
+     * Returns the unlocalized name of this item. This version accepts an ItemStack so different stacks can have
+     * different names based on their damage or NBT.
+     */
+    @Override
+    public String getUnlocalizedName(ItemStack itemStack)
+    {
+        return this.getUnlocalizedName() + names[itemStack.getItemDamage()];
+    }
     
     public boolean hasMetadata() {
         return hasMetadata;

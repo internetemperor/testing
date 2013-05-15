@@ -1,6 +1,5 @@
 package interemp.testmod.blocks;
 
-import interemp.testmod.TestMod;
 import interemp.testmod.lib.BlockReference;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;

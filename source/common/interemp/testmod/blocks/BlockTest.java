@@ -43,7 +43,10 @@ public class BlockTest extends Block {
 
             for (int i = 0; i < names.length; i++)
             {
-                this.iconArray[i] = ic.registerIcon(Reference.MOD_ID.toLowerCase() + ":" + getUnlocalizedName2() + names[i]);
+                String name = names[i];
+                name = name.replaceFirst("%", "");
+                name = name.replaceAll(" ", "");
+                this.iconArray[i] = ic.registerIcon(Reference.MOD_ID.toLowerCase() + ":" + getUnlocalizedName2() + name);
             }
         }
         else {

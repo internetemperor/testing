@@ -1,7 +1,6 @@
 package interemp.testmod.items;
 
 import interemp.testmod.TestMod;
-import interemp.testmod.lib.BlockReference;
 import interemp.testmod.lib.Reference;
 
 import java.util.List;
@@ -51,6 +50,7 @@ public class ItemTest extends Item {
         }
     }
     
+    @SuppressWarnings("unchecked")
     @SideOnly(Side.CLIENT)
     public void getSubItems(int id, CreativeTabs tabs, List list){
         for(int i = 0; i < names.length; i++){

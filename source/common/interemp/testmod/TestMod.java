@@ -2,7 +2,7 @@ package interemp.testmod;
 
 import interemp.testmod.blocks.BlockOres;
 import interemp.testmod.blocks.ItemBlockTest;
-import interemp.testmod.core.CreativeTab;
+import interemp.testmod.gui.CreativeTab;
 import interemp.testmod.items.ItemDusts;
 import interemp.testmod.lib.BlockReference;
 import interemp.testmod.lib.ItemReference;
@@ -10,6 +10,7 @@ import interemp.testmod.lib.Reference;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.common.Configuration;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.Instance;
@@ -54,7 +55,14 @@ public class TestMod {
     */
     @PreInit
     public void preInit(FMLPreInitializationEvent event) {
-       
+        // TODO: Create a class to manage all this stuff
+        Configuration config = new Configuration(event.getSuggestedConfigurationFile());
+        config.load();
+        System.out.println("Ore block ID is: " + BlockReference.id_block_ores + ", Dust ID: " + ItemReference.id_item_dusts);
+        BlockReference.id_block_ores = config.getBlock("blockTEOres", BlockReference.id_block_ores).getInt();
+        ItemReference.id_item_dusts = config.getItem("itemTEDusts", ItemReference.id_item_dusts).getInt();
+        System.out.println("Ore block ID is now: " + BlockReference.id_block_ores + ", Dust ID: " + ItemReference.id_item_dusts);
+        config.save();
     }
     
     /**
@@ -65,7 +73,7 @@ public class TestMod {
     */
     @Init
     public void init(FMLInitializationEvent event) {
-        blockOres = new BlockOres(BlockReference.ID_BLOCK_ORES, Material.rock);
+        blockOres = new BlockOres(BlockReference.id_block_ores, Material.rock);
         GameRegistry.registerBlock(blockOres, ItemBlockTest.class, "TestMod Ores Block");
         
         // TODO: Move these to a helper class
@@ -88,7 +96,7 @@ public class TestMod {
             System.out.println("Registered name: " + name);
         }
         
-        itemDusts = new ItemDusts(ItemReference.ID_ITEM_DUSTS);
+        itemDusts = new ItemDusts(ItemReference.id_item_dusts);
         GameRegistry.registerItem(itemDusts, "TestMod Dusts Item");
         
         // Metaitem registration

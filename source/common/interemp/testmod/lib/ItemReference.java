@@ -8,9 +8,12 @@ package interemp.testmod.lib;
  * @author InternetEmperor
  */
 public class ItemReference {
-    public final static int ID_ITEM_DUSTS = 26000;
+    public static int id_item_dusts = 1;
+    
+    
 
-    // Prefix for this group is Pulverized
+    // Name prefix for this group is Pulverized
+    // Unlocalized name prefix is ore
     public static String[] dusts = {
         "%Uranium",
         "Uranium Dioxide",
@@ -22,5 +25,18 @@ public class ItemReference {
         "Mixed Oxide",
         "%Thorium",
         "%Fluorite"
+    };
+    
+    public static String[] ingots = {
+        "Uranium%",
+        "Depleted Uranium%",
+        "Enriched Uranium%",
+        "Plutonium%",
+        "Steel%"
+    };
+    
+    public static String[] chemicals = {
+        "Nitric Acid",
+        "Fluorine"
     };
 }

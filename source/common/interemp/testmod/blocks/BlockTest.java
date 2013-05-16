@@ -4,7 +4,6 @@ import java.util.List;
 
 import interemp.testmod.TestMod;
 import interemp.testmod.lib.Reference;
-import interemp.testmod.lib.Strings;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -57,6 +56,7 @@ public class BlockTest extends Block {
     /**
      * returns a list of blocks with the same ID, but different meta (eg: wood returns 4 blocks)
      */
+    @SuppressWarnings("unchecked")
     @SideOnly(Side.CLIENT)
     public void getSubBlocks(int id, CreativeTabs tab, List list) {
         for (int j = 0; j < names.length; ++j)

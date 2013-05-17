@@ -16,7 +16,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class ItemTest extends Item {
     
     public String[] names;
-    public String nameConstant;
     public Icon[] iconArray;
     public boolean hasMetadata = false;
 
@@ -39,10 +38,7 @@ public class ItemTest extends Item {
 
             for (int i = 0; i < names.length; i++)
             {
-                String name = names[i];
-                name = name.replaceFirst("%", "");
-                name = name.replaceAll(" ", "");
-                this.iconArray[i] = ic.registerIcon(Reference.MOD_ID.toLowerCase() + ":" + getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".") + 1) + name);
+                this.iconArray[i] = ic.registerIcon(Reference.MOD_ID.toLowerCase() + ":" + getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".") + 1) + names[i]);
             }
         }
         else {

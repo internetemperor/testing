@@ -5,12 +5,12 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraftforge.common.MinecraftForge;
 
-public class BlockOres extends BlockTest {
+public class BlockMachines extends BlockTest {
 
-    public BlockOres(int id, Material material) {
+    public BlockMachines(int id, Material material) {
         super(id, material);
-        names = BlockReference.ores;
-        setUnlocalizedName("ore"); // this is important for itemblocktest
+        names = BlockReference.machines;
+        setUnlocalizedName("machine"); // this is important for itemblocktest
         hasMetadata = true;
 
         // Block's hardness (base time to harvest it with the correct tool).

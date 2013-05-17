@@ -2,14 +2,14 @@ package interemp.testmod.items;
 
 import interemp.testmod.lib.ItemReference;
 
-public class ItemDusts extends ItemTest {
+public class ItemChemicals extends ItemTest {
 
-    public ItemDusts(int id) {
+    public ItemChemicals(int id) {
         super(id);
         setHasSubtypes(true);
         setMaxDamage(0);
-        setUnlocalizedName("dust");
+        setUnlocalizedName("chemical");
         hasMetadata = true;
-        names = ItemReference.dusts;
+        names = ItemReference.chemicals;
     }
 }

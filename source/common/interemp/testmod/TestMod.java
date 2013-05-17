@@ -7,6 +7,9 @@ import interemp.testmod.items.ItemDusts;
 import interemp.testmod.lib.BlockReference;
 import interemp.testmod.lib.ItemReference;
 import interemp.testmod.lib.Reference;
+import interemp.testmod.managers.ConfigHandler;
+import interemp.testmod.managers.CraftingHandler;
+import interemp.testmod.managers.ModRegistry;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
@@ -34,7 +37,7 @@ public class TestMod {
     @SidedProxy(clientSide="interemp.testmod.client.ClientProxy", serverSide="interemp.testmod.CommonProxy")
     public static CommonProxy proxy;
     
-    public static CreativeTabs tab = new CreativeTab(CreativeTabs.getNextID(), Reference.MOD_ID);
+    public static CreativeTabs tab = new CreativeTab(CreativeTabs.getNextID(), "Test Mod");
     
     // Blocks
     
@@ -55,14 +58,9 @@ public class TestMod {
     */
     @PreInit
     public void preInit(FMLPreInitializationEvent event) {
-        // TODO: Create a class to manage all this stuff
-        Configuration config = new Configuration(event.getSuggestedConfigurationFile());
-        config.load();
-        System.out.println("Ore block ID is: " + BlockReference.id_block_ores + ", Dust ID: " + ItemReference.id_item_dusts);
-        BlockReference.id_block_ores = config.getBlock("blockTEOres", BlockReference.id_block_ores).getInt();
-        ItemReference.id_item_dusts = config.getItem("itemTEDusts", ItemReference.id_item_dusts).getInt();
-        System.out.println("Ore block ID is now: " + BlockReference.id_block_ores + ", Dust ID: " + ItemReference.id_item_dusts);
-        config.save();
+        ConfigHandler.preinit(event);
+        BlockReference.preinit();
+        ItemReference.preinit();
     }
     
     /**
@@ -73,50 +71,9 @@ public class TestMod {
     */
     @Init
     public void init(FMLInitializationEvent event) {
-        blockOres = new BlockOres(BlockReference.id_block_ores, Material.rock);
-        GameRegistry.registerBlock(blockOres, ItemBlockTest.class, "TestMod Ores Block");
-        
-        // TODO: Move these to a helper class
-        // Metablock registration
-        for (int i = 0; i < BlockReference.ores.length; i++) {
-            // TODO: Make this more modular (for loop through array of multiblock name arrays)
-            String name = "";
-            if(BlockReference.ores[i].startsWith("%")) {
-                name = blockOres.nameConstant + " " + BlockReference.ores[i];
-            }
-            else if(BlockReference.ores[i].endsWith("%")) {
-                name = BlockReference.ores[i] + " " + blockOres.nameConstant;
-            }
-            else {
-                name = BlockReference.ores[i];
-            }
-            name = name.replaceFirst("%", "");
-            
-            LanguageRegistry.addName(new ItemStack(blockOres, 1, i), name);
-            System.out.println("Registered name: " + name);
-        }
-        
-        itemDusts = new ItemDusts(ItemReference.id_item_dusts);
-        GameRegistry.registerItem(itemDusts, "TestMod Dusts Item");
-        
-        // Metaitem registration
-        for (int i = 0; i < ItemReference.dusts.length; i++) {
-            // TODO: Make this more modular (for loop through array of multiblock name arrays)
-            String name = "";
-            if(ItemReference.dusts[i].startsWith("%")) {
-                name = itemDusts.nameConstant + " " + ItemReference.dusts[i];
-            }
-            else if(ItemReference.dusts[i].endsWith("%")) {
-                name = ItemReference.dusts[i] + " " + itemDusts.nameConstant;
-            }
-            else {
-                name = ItemReference.dusts[i];
-            }
-            name = name.replaceFirst("%", "");
-            
-            LanguageRegistry.addName(new ItemStack(itemDusts, 1, i), name);
-            System.out.println("Registered name: " + name);
-        }
+        BlockReference.init();
+        ItemReference.init();
+        ModRegistry.printAll();
     }
     
     /**
@@ -127,6 +84,6 @@ public class TestMod {
     */
     @PostInit
     public void postInit(FMLPostInitializationEvent event) {
-        
+        CraftingHandler.postinit();
     }
 }
